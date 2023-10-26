@@ -11,30 +11,30 @@ function Show-Menu {
     Write-Host "Q: Press 'Q' to quit."
 }
 
-do
-{
+do {
     Show-Menu
     $selection = Read-Host "Please make a selection"
-    switch ($selection)
-    {
-    '1' {
-        'You chose option #1'
-        If (!(Test-path -path "C:\Temp" -ErrorAction SilentlyContinue)){
-            New-Item -Path "C:\temp" -ItemType Directory -Force   
-        }
-        Set-Location -Path "C:\temp"
-        wget https://aka.ms/intuneps1 -outfile IntuneODCStandAlone.ps1
-        powerShell -ExecutionPolicy Bypass -File .\IntuneODCStandAlone.ps1
-        
-        
+    switch ($selection) {
+        '1' {
+            'You chose option #1'
+            If (!(Test-path -path "C:\Temp" -ErrorAction SilentlyContinue)) {
+                New-Item -Path "C:\temp" -ItemType Directory -Force | Out-Null   
+            }
+            Set-Location -Path "C:\temp" 
+            wget https://aka.ms/intuneps1 -outfile IntuneODCStandAlone.ps1
+            powerShell -ExecutionPolicy Bypass -File .\IntuneODCStandAlone.ps1
+            Install-Module "Az.Storage" | Out-Null
+            Import-Module "Az.Storage" | Out-Null
 
-    } 
-    '2' {
-        'You chose option #2'
-    } 
-    '3' {
-        'You chose option #3'
-    }
+            $LogFile = Get-ChildItem -Path "C:\Temp" -Include "$env_computername_CollectedData*.zip" -Recurse
+
+        } 
+        '2' {
+            'You chose option #2'
+        } 
+        '3' {
+            'You chose option #3'
+        }
     }
     pause
 }
