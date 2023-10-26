@@ -19,7 +19,7 @@ do
     {
     '1' {
         'You chose option #1'
-        If (!(Test-path Test-path "C:\Temp" -ErrorAction SilentlyContinue)){
+        If (!(Test-path -path "C:\Temp" -ErrorAction SilentlyContinue)){
             New-Item -Path C:temp -ItemType Directory -Force   
         }
         Set-Location -Path "C:\temp"
@@ -27,7 +27,7 @@ do
         powerShell -ExecutionPolicy Bypass -File .\IntuneODCStandAlone.ps1
         
         
-        
+
     } 
     '2' {
         'You chose option #2'
