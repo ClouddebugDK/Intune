@@ -5,7 +5,7 @@ function Show-Menu {
     Clear-Host
     Write-Host "================ $Title ================"
     
-    Write-Host "1: Press '1' for this option."
+    Write-Host "1: Press '1' for this option: Collect Diagnostics Log."
     Write-Host "2: Press '2' for this option."
     Write-Host "3: Press '3' for this option."
     Write-Host "Q: Press 'Q' to quit."
@@ -19,6 +19,12 @@ do
     {
     '1' {
         'You chose option #1'
+        If (!(Test-path Test-path "C:\Temp")){
+            New-Item -Path C:temp -ItemType Directory -Force   
+        }
+        Set-Location -Path "C:\temp"
+        wget https://aka.ms/intuneps1 -outfile IntuneODCStandAlone.ps1
+        powerShell -ExecutionPolicy Bypass -File .\IntuneODCStandAlone.ps1 
     } 
     '2' {
         'You chose option #2'
