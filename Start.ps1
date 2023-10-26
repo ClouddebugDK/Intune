@@ -20,7 +20,7 @@ do
     '1' {
         'You chose option #1'
         If (!(Test-path -path "C:\Temp" -ErrorAction SilentlyContinue)){
-            New-Item -Path C:temp -ItemType Directory -Force   
+            New-Item -Path "C:\temp" -ItemType Directory -Force   
         }
         Set-Location -Path "C:\temp"
         wget https://aka.ms/intuneps1 -outfile IntuneODCStandAlone.ps1
