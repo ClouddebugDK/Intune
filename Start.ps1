@@ -5,7 +5,7 @@ function Show-Menu {
     Clear-Host
     Write-Host "================ $Title ================"
     
-    Write-Host "1: Press '1' for this option: Collect Diagnostics Log."
+    Write-Host "1: Press '1' for: Update Collect Diagnostics Log."
     Write-Host "2: Press '2' for this option."
     Write-Host "3: Press '3' for this option."
     Write-Host "Q: Press 'Q' to quit."
